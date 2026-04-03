@@ -17,7 +17,7 @@ jobs:
         python: ["3.11", "3.12"]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v5
         with:
@@ -46,7 +46,7 @@ jobs:
     container: python:3.12-alpine
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install build deps
         run: apk add --no-cache gcc musl-dev linux-headers
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v5
         with:
@@ -83,7 +83,7 @@ jobs:
     continue-on-error: true
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v5
         with:
@@ -105,7 +105,7 @@ jobs:
     continue-on-error: true
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v5
         with:
@@ -127,7 +127,7 @@ jobs:
     continue-on-error: true
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Python
         run: pacman -Sy --noconfirm python python-pip
@@ -137,3 +137,6 @@ jobs:
 
       - name: Integration tests (pacman)
         run: python -m pytest tests/integration/test_pacman_backend.py -v --tb=short || true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
